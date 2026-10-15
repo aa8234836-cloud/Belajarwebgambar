@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pengumpulan Tugas</title>
+</head>
+<body>
+  <h1>Pengumpulan Tugas</h1>
+  <p>Berikut foto tugas saya:</p>
+
+  <input type="file" id="foto" accept="image/*">
+  <br><br>
+  <img id="preview" alt="Foto tugas"
+       style="max-width:100%;height:auto;">
+
+  <script>
+    document.getElementById('foto').addEventListener('change', function() {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function() {
+          document.getElementById('preview').src = reader.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
